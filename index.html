@@ -991,6 +991,7 @@
 </body>
 </html>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1069,17 +1070,26 @@
         </div>
     </div>
 
+
     <script>
-        // Correct credentials
-        const correctLoginId = "Snapdemon@112"; // Set your login ID here
-        const correctPassword = "0913"; // Set your password here
+        // Multiple user credentials
+        const userCredentials = [
+            { loginId: "User1", password: "Password1" },
+            { loginId: "User2", password: "Password2" },
+            { loginId: "Snapdemon@112", password: "0913" }
+        ];
 
         // Function to check the entered login ID and password
         function checkCredentials() {
             const enteredLoginId = document.getElementById('loginId').value;
             const enteredPassword = document.getElementById('password').value;
-            
-            if (enteredLoginId === correctLoginId && enteredPassword === correctPassword) {
+
+            // Check if the entered credentials match any in the list
+            const user = userCredentials.find(user => 
+                user.loginId === enteredLoginId && user.password === enteredPassword
+            );
+
+            if (user) {
                 document.getElementById('overlay').style.display = 'none'; // Hide the overlay
                 document.getElementById('content').style.display = 'block'; // Show the content
             } else {
